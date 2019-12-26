@@ -1,0 +1,5 @@
+micronaut:
+  application:
+    name: JavaCommon
+  server:
+    port: -1

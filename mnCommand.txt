@@ -1,0 +1,1 @@
+mn create-app com-tqt-javacommon --profile service --lang java --build gradle
