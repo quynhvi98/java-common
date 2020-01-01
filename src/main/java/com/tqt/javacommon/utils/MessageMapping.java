@@ -9,10 +9,35 @@ import java.util.Map;
  * @author Vi Quynh (vi.quynh.31598@gmail.com)
  */
 public class MessageMapping {
-    public static Map<Integer, Integer> mappingMessage(Integer errCode) {
+
+    public static Map<Integer, Integer> DVCMappingMICErrCode() {
         Map<Integer, Integer> messMap = new HashMap<>();
-        messMap.put(DVCMessage.SUCCESS.getVal(), MICMessage.SUCCESS.getVal());
-        messMap.put(DVCMessage.FAIL.getVal(), MICMessage.FAIL.getVal());
+        messMap.put(MICMessage.SUCCESS.getVal(), DVCMessage.SUCCESS.getVal());
+        messMap.put(MICMessage.FAIL.getVal(), DVCMessage.FAIL.getVal());
         return messMap;
+    }
+
+    public static Map<Integer, String> DVCMapping() {
+        Map<Integer, String> messMap = new HashMap<>();
+        messMap.put(DVCMessage.SUCCESS.getVal(), DVCMessage.SUCCESS.getMs());
+        messMap.put(DVCMessage.FAIL.getVal(), DVCMessage.FAIL.getMs());
+        return messMap;
+    }
+
+    public static Message mappingCodeProcess(Message message, Integer errCode, String mess) {
+        Map<Integer, Integer> map = MessageMapping.DVCMappingMICErrCode();
+        Map<Integer, String> mapMs = MessageMapping.DVCMapping();
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()){
+            if (entry.getKey().equals(errCode)){
+                message.setErrCode(entry.getValue());
+                for (Map.Entry<Integer, String> e : mapMs.entrySet()) {
+                    if (e.getKey().equals(entry.getValue())) {
+                        message.setMessage(e.getValue());
+                    }
+                }
+            }
+        }
+        return message;
     }
 }

@@ -2,4 +2,4 @@ micronaut:
   application:
     name: JavaCommon
   server:
-    port: -1
+    port: 8082

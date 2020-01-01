@@ -10,8 +10,8 @@ import java.util.Map;
  */
 
 public enum DVCMessage {
-    SUCCESS(1, "Successful"),
-    FAIL(2, "Fail");
+    SUCCESS(1, "Thành công"),
+    FAIL(2, "Thất bại");
     private int val;
     private String ms;
     DVCMessage(int val, String ms) {

@@ -30,16 +30,8 @@ public class Message {
         this.message = message;
     }
 
-    public Map<Integer, List<Message>> getStudentGradeMap() {
-        return studentGradeMap;
-    }
-
-    public void setStudentGradeMap(Map<Integer, List<Message>> studentGradeMap) {
-        this.studentGradeMap = studentGradeMap;
-    }
-
     private String message;
     List<Message> ms = new LinkedList<>();
-    Map<Integer, List<Message>> studentGradeMap = ms.stream().collect(Collectors.groupingBy(Message::getErrCode));
+//    Map<Integer, List<Message>> studentGradeMap = ms.stream().collect(Collectors.groupingBy(Message::getErrCode));
 
 }
