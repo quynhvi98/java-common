@@ -17,25 +17,25 @@ public class MessageMapping {
         return messMap;
     }
 
-    public static Map<Integer, String> DVCMapping() {
-        Map<Integer, String> messMap = new HashMap<>();
-        messMap.put(DVCMessage.SUCCESS.getVal(), DVCMessage.SUCCESS.getMs());
-        messMap.put(DVCMessage.FAIL.getVal(), DVCMessage.FAIL.getMs());
+    public static Map<String, String> DVCMapping() {
+        Map<String, String> messMap = new HashMap<>();
+        messMap.put(String.valueOf(DVCMessage.SUCCESS.getVal()), DVCMessage.SUCCESS.getMs());
+        messMap.put(String.valueOf(DVCMessage.FAIL.getVal()), DVCMessage.FAIL.getMs());
         return messMap;
     }
 
     public static Message mappingCodeProcess(Message message, Integer errCode, String mess) {
         Map<Integer, Integer> map = MessageMapping.DVCMappingMICErrCode();
-        Map<Integer, String> mapMs = MessageMapping.DVCMapping();
+        Map<String, String> mapMs = MessageMapping.DVCMapping();
 
         for (Map.Entry<Integer, Integer> entry : map.entrySet()){
             if (entry.getKey().equals(errCode)){
                 message.setErrCode(entry.getValue());
-                for (Map.Entry<Integer, String> e : mapMs.entrySet()) {
-                    if (e.getKey().equals(entry.getValue())) {
-                        message.setMessage(e.getValue());
-                    }
-                }
+            }
+        }
+        for (Map.Entry<String, String> e : mapMs.entrySet()) {
+            if (e.getKey().equals(message.getErrCode())) {
+                message.setMessage(e.getValue());
             }
         }
         return message;
