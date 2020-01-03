@@ -26,18 +26,14 @@ public class MessageMapping {
 
     public static Message mappingCodeProcess(Message message, Integer errCode, String mess) {
         Map<Integer, Integer> map = MessageMapping.DVCMappingMICErrCode();
-        Map<String, String> mapMs = MessageMapping.DVCMapping();
 
         for (Map.Entry<Integer, Integer> entry : map.entrySet()){
             if (entry.getKey().equals(errCode)){
                 message.setErrCode(entry.getValue());
+                break;
             }
         }
-        for (Map.Entry<String, String> e : mapMs.entrySet()) {
-            if (e.getKey().equals(message.getErrCode())) {
-                message.setMessage(e.getValue());
-            }
-        }
+        message.setMessage(DVCMessage.getDescFromCode(message.getErrCode()));
         return message;
     }
 }
