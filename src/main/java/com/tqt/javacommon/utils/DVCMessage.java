@@ -1,7 +1,6 @@
 package com.tqt.javacommon.utils;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Posted from Jan 01, 2020, 7:10 PM
@@ -43,5 +42,20 @@ public enum DVCMessage {
 
     public void setMs(String ms) {
         this.ms = ms;
+    }
+
+    public static String getDescFromCode(Integer errCode) {
+        for (DVCMessage errorCodes : DVCMessage.list()) {
+            if (errorCodes.getVal() == errCode)
+                return errorCodes.getMs();
+        }
+        return FAIL.getMs();
+    }
+
+    public static List<DVCMessage> list() {
+        List<DVCMessage> list = new ArrayList<>();
+        DVCMessage[] values = values();
+        Collections.addAll(list, values);
+        return list;
     }
 }
