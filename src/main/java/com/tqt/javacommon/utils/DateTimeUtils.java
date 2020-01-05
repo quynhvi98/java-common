@@ -48,6 +48,9 @@ public final class DateTimeUtils {
     }
 
     public static String toString(Date date, String pattern) {
+        if (pattern == null) {
+            return null;
+        }
         SimpleDateFormat df = new SimpleDateFormat(pattern);
         return df.format(date);
     }
@@ -66,6 +69,9 @@ public final class DateTimeUtils {
     }
 
     public static Date toDate(String reservedFrom) {
+        if (reservedFrom == null) {
+            return null;
+        }
         try {
             return fm_date_time.parse(reservedFrom);
         } catch (ParseException e) {
