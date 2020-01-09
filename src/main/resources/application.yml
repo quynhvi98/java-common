@@ -3,3 +3,13 @@ micronaut:
     name: JavaCommon
   server:
     port: 8082
+  metrics:
+    enabled: true
+    export:
+      prometheus:
+        enabled: true
+        step: PT1M
+        descriptions: true
+endpoints:
+  prometheus:
+    sensitive: false
