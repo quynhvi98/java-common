@@ -32,6 +32,15 @@ dependencies {
 	testCompile "io.micronaut.test:micronaut-test-junit5"
 	testCompile "org.junit.jupiter:junit-jupiter-api"
 	testRuntime "org.junit.jupiter:junit-jupiter-engine"
+	// https://mvnrepository.com/artifact/io.micronaut.configuration/micronaut-micrometer-core
+	compile group: 'io.micronaut.configuration', name: 'micronaut-micrometer-core', version: '1.3.0'
+	// https://mvnrepository.com/artifact/io.micronaut/micronaut-management
+	compile group: 'io.micronaut', name: 'micronaut-management', version: '1.2.0'
+// https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
+	compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.2.0'
+
+
+
 }
 test.classpath += configurations.developmentOnly
 mainClassName = "com.tqt.javacommon.Application"
