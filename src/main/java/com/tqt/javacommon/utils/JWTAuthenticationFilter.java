@@ -1,5 +1,9 @@
 package com.tqt.javacommon.utils;
 
+import io.micronaut.http.HttpStatus;
+import io.micronaut.http.filter.FilterChain;
+import io.micronaut.websocket.annotation.WebSocketComponent;
+
 import java.io.IOException;
 
 /**
@@ -7,7 +11,6 @@ import java.io.IOException;
  *
  * @author Vi Quynh (vi.quynh.31598@gmail.com)
  */
-@Compo
 public class JWTAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest req,
