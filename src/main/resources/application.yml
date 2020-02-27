@@ -2,7 +2,7 @@ micronaut:
   application:
     name: JavaCommon
   server:
-    port: 8082
+    port: 8083
   metrics:
     enabled: true
     export:
